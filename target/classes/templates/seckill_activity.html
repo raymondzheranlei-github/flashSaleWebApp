@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+  <title>Flash Sale Activity</title>
+  <link rel="icon" href="img/logo2.png">
+
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+  <link rel="stylesheet" type="text/css" href="css/all.css" />
+  <link rel="stylesheet" type="text/css" href="css/pages-seckill-index.css" />
+</head>
+
+<body>
+<!-- 头部栏位 -->
+<!--页面顶部-->
+<div id="nav-bottom">
+  <!--顶部-->
+  <div class="nav-top">
+    <div class="top">
+      <div class="py-container">
+        <div class="shortcut">
+          <ul class="fl">
+            <li class="f-item">Welcome!</li>
+            <li class="f-item">Please
+              <a href="login.html" target="_blank">Login</a>
+              <span>
+                  <a href="register.html" target="_blank">Register</a>
+                </span>
+            </li>
+          </ul>
+          <div class="fr typelist">
+            <ul class="types">
+              <li class="f-item">
+                <span>My Order</span>
+              </li>
+
+              <li class="f-item">
+                  <span>
+                    <a href="cart.html" target="_blank">My Shopping Cart</a>
+                  </span>
+              </li>
+              <li class="f-item">
+                  <span>
+                    <a href="home.html" target="_blank">My Account</a>
+                  </span>
+              </li>
+              <li class="f-item">
+                <span>Membership</span>
+              </li>
+              <li class="f-item">
+                <span>Enterprise Procurement</span>
+              </li>
+              <li class="f-item">
+                <span>Follow us!</span>
+              </li>
+              <li class="f-item">
+                  <span>
+                    <a href="cooperation.html" target="_blank">Investment</a>
+                  </span>
+              </li>
+              <li class="f-item">
+                  <span>
+                    <a href="shoplogin.html" target="_blank">Retailers</a>
+                  </span>
+              </li>
+              <li class="f-item">
+                <span>Navigation</span></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!--头部-->
+    <div class="header">
+      <div class="py-container">
+        <div class="yui3-g Logo">
+          <div class="yui3-u Left logoArea">
+            <a class="logo-bd" title="Flash Sale" href="index.html" target="_blank"></a>
+          </div>
+          <div class="yui3-u Rit searchArea">
+            <div class="search">
+              <form action="" class="sui-form form-inline">
+                <!--searchAutoComplete-->
+                <div class="input-append">
+                  <input type="text" id="autocomplete" class="input-error input-xxlarge" />
+                  <button class="sui-btn btn-xlarge btn-danger" type="button">Search</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="py-container index">
+  <!--banner-->
+  <div class="banner">
+    <img src="img/_/banner.png" class="img-responsive" alt="">
+  </div>
+  <!--秒杀时间-->
+  <div class="sectime">
+    <div class="item-time active">
+      <div class="time-clock">12:00</div>
+      <div class="time-state-on">
+        <span class="on-text">In the Process</span>
+        <span class="on-over">Time Left：01:02:34</span>
+      </div>
+    </div>
+    <div class="item-time">
+      <div class="time-clock">14:00</div>
+      <div class="time-state-will">
+        <span>Start Soon</span>
+      </div>
+    </div>
+    <div class="item-time">
+      <div class="time-clock">16:00</div>
+      <div class="time-state-will">
+        <span>Start Soon</span>
+      </div>
+    </div>
+    <div class="item-time">
+      <div class="time-clock">18:00</div>
+      <div class="time-state-will">
+        <span>Start Soon</span>
+      </div>
+    </div>
+    <div class="item-time">
+      <div class="time-clock">20:00</div>
+      <div class="time-state-will">
+        <span>Start Soon</span>
+      </div>
+    </div>
+  </div>
+  <!--秒杀活动列表列表-->
+  <div class="goods-list" id="app">
+    <ul class="seckill" id="seckill">
+      <tr th:each="seckillActivity : ${seckillActivities}">
+        <li class="seckill-item">
+          <div class="pic">
+            <img src="img/_/list.jpg" alt=''>
+          </div>
+          <div class="intro">
+            <span th:text="${seckillActivity.name}">Activity Name</span>
+          </div>
+          <div class='price'>
+            <b class='sec-price' th:text="'￥'+${seckillActivity.seckillPrice}"></b>
+            <b class='ever-price' th:text="'￥'+${seckillActivity.oldPrice}"></b>
+          </div>
+          <div class='num'>
+            <div>999 has been sold</div>
+            <div class='progress'>
+              <div class='sui-progress progress-danger'>
+                <span style='width: 70%;' class='bar'></span>
+              </div>
+            </div>
+            <div>Remaining Number of Goods
+              <b class='owned'>999</b></div>
+          </div>
+          <a class='sui-btn btn-block btn-buy' th:href="@{'/item/'+${seckillActivity.id}}" target='_blank'>Start Buying</a>
+        </li>
+      </tr>
+    </ul>
+  </div>
+  <div class="cd-top">
+    <div class="top">
+      <img src="img/_/gotop.png" />
+      <b>TOP</b>
+    </div>
+    <div class="code" id="code">
+        <span>
+          <img src="img/_/code.png" />
+        </span>
+    </div>
+    <div class="erweima">
+      <img src="img/_/erweima.jpg" alt="">
+      <s></s>
+    </div>
+  </div>
+</div>
+
+<!--回到顶部-->
+
+<!-- 底部栏位 -->
+<!--页面底部-->
+<div class="clearfix footer">
+  <div class="py-container">
+    <div class="footlink">
+      <div class="Mod-service">
+        <ul class="Mod-Service-list">
+          <li class="grid-service-item intro  intro1">
+
+            <i class="serivce-item fl"></i>
+            <div class="service-text">
+              <h4>100% Authentic Guarantee</h4>
+              <p>Quality Guarantee</p>
+            </div>
+
+          </li>
+          <li class="grid-service-item  intro intro2">
+
+            <i class="serivce-item fl"></i>
+            <div class="service-text">
+              <h4>100% Authentic Guarantee</h4>
+              <p>Quality Guarantee</p>
+            </div>
+
+          </li>
+          <li class="grid-service-item intro  intro3">
+
+            <i class="serivce-item fl"></i>
+            <div class="service-text">
+              <h4>100% Authentic Guarantee</h4>
+              <p>Quality Guarantee</p>
+            </div>
+
+          </li>
+          <li class="grid-service-item  intro intro4">
+
+            <i class="serivce-item fl"></i>
+            <div class="service-text">
+              <h4>100% Authentic Guarantee</h4>
+              <p>Quality Guarantee</p>
+            </div>
+
+          </li>
+          <li class="grid-service-item intro intro5">
+
+            <i class="serivce-item fl"></i>
+            <div class="service-text">
+              <h4>100% Authentic Guarantee</h4>
+              <p>Quality Guarantee</p>
+            </div>
+
+          </li>
+        </ul>
+      </div>
+      <div class="clearfix Mod-list">
+        <div class="yui3-g">
+          <div class="yui3-u-1-6">
+            <h4>Shopping Guidance</h4>
+            <ul class="unstyled">
+              <li>Shopping Process</li>
+              <li>Membership</li>
+              <li>Group Buying</li>
+              <li>Recent Q&A</li>
+              <li>Shopping Guidance</li>
+            </ul>
+
+          </div>
+          <div class="yui3-u-1-6">
+            <h4>Ways of Delivery</h4>
+            <ul class="unstyled">
+              <li>Pick Up</li>
+              <li>Delivery</li>
+              <li>Search Delivery Service</li>
+              <li>Delivery Fees</li>
+              <li>International Delivery</li>
+            </ul>
+          </div>
+          <div class="yui3-u-1-6">
+            <h4>Payment Method</h4>
+            <ul class="unstyled">
+              <li>Cash on Delivery</li>
+              <li>Online Payment</li>
+              <li>Installment Plans</li>
+              <li>Pay by Mail</li>
+              <li>Enterprise Payments</li>
+            </ul>
+          </div>
+          <div class="yui3-u-1-6">
+            <h4>Service</h4>
+            <ul class="unstyled">
+              <li>Service Policy</li>
+              <li>Price Protection</li>
+              <li>Refund Policy</li>
+              <li>Repair/Return/Exchange Policy</li>
+              <li>Cancel Order</li>
+            </ul>
+          </div>
+          <div class="yui3-u-1-6">
+            <h4>Special Service</h4>
+            <ul class="unstyled">
+              <li>Auction</li>
+              <li>DIY</li>
+              <li>Extended Warranty Service</li>
+              <li>B2B2C Platform E-Card</li>
+              <li>B2B2C Platform Contact</li>
+            </ul>
+          </div>
+          <div class="yui3-u-1-6">
+            <h4>Helping Center</h4>
+            <img src="img/erwei_jz.png">
+          </div>
+        </div>
+      </div>
+      <div class="Mod-copyright">
+        <ul class="helpLink">
+          <li>About Us
+            <span class="space"></span>
+          </li>
+          <li>Contact Us
+            <span class="space"></span>
+          </li>
+          <li>About Us
+            <span class="space"></span>
+          </li>
+          <li>Support Retailers
+            <span class="space"></span>
+          </li>
+          <li>Selling Center
+            <span class="space"></span>
+          </li>
+          <li>Sponsor
+            <span class="space"></span>
+          </li>
+          <li>About Us
+            <span class="space"></span>
+          </li>
+          <li>Selling Center
+            <span class="space"></span>
+          </li>
+          <li>Sponsor
+            <span class="space"></span>
+          </li>
+          <li>About Us</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!--页面底部END-->
+<!-- 引入组件库 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/element-ui/2.5.4/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        goodslist: [{
+          intro: 'Apple iPhone 6s 32G Gold 4G',
+          newprice: '6088',
+          oldprice: '6988',
+          rate: '87%',
+          left: '29'
+        },
+          {
+            intro: 'Apple iPhone 6s 32G Gold 4G',
+            newprice: '6088',
+            oldprice: '6988',
+            rate: '87%',
+            left: '29'
+          }, {
+            intro: 'Apple iPhone 6s 32G Gold 4G',
+            newprice: '6088',
+            oldprice: '6988',
+            rate: '87%',
+            left: '29'
+          }, {
+            intro: 'Apple iPhone 6s 32G Gold 4G',
+            newprice: '6088',
+            oldprice: '6988',
+            rate: '87%',
+            left: '29'
+          }, {
+            intro: 'Apple iPhone 6s 32G Gold 4G ',
+            newprice: '6088 ',
+            oldprice: '6988 ',
+            rate: '87 % ',
+            left: '29 '
+          },
+          {
+            intro: 'Apple iPhone 6s 32G Gold 4G ',
+            newprice: '6088',
+            oldprice: '6988',
+            rate: '87%',
+            left: '29'
+          }, {
+            intro: 'Apple iPhone 6s 32G Gold 4G',
+            newprice: '6088',
+            oldprice: '6988',
+            rate: '87%',
+            left: '29'
+          }
+        ]
+      }
+    }
+  })
+</script>
+
+
+
+</body>
+
+</html>
