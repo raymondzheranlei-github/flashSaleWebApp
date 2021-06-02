@@ -2,3 +2,6 @@
 mvnw
 mvnw.cmd
 seckill.iml
+.idea/
+.DS_Store
+src/.DS_Store

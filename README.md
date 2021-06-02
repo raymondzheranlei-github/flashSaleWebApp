@@ -1,4 +1,4 @@
-#Flash Sale Web App
+# Flash Sale Web App
 
 ## General
 • Developed the flash sale web app with high concurrency and high availability by using Java Spring Boot
